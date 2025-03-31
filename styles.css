@@ -71,6 +71,19 @@ body {
     font-weight: bold;
     border-bottom: 2px solid #ff3636;
 }
+/* Mobile hamburger menu animation */
+.navbar-toggler {
+    transition: transform 0.3s ease;
+}
+
+.navbar-toggler.collapsed {
+    transform: rotate(0deg);
+}
+
+.navbar-toggler:not(.collapsed) {
+    transform: rotate(90deg);  /* Rotating the hamburger into an 'X' */
+}
+
 
 /* Responsive Navbar */
 @media (max-width: 768px) {
@@ -645,3 +658,172 @@ footer {
     margin-bottom: 15px;
 }
 
+
+/* About Us Section with Parallax Effect */
+.about-us-section {
+    background-image: url('/aboutus.png'); /* Your background image */
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    position: relative;
+    z-index: 1;
+    padding: 80px 20px; /* Added padding for better spacing */
+    text-align: center;
+    border-radius: 10px; /* Rounded corners for a modern look */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+}
+
+/* Dark Overlay for Improved Text Readability */
+.about-us-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Increased opacity for better contrast */
+    z-index: -1;
+}
+
+/* Section Title Styling */
+.about-us-section .section-title {
+    font-size: 3rem; /* Larger font size for emphasis */
+    font-weight: bold;
+    color: #ff3636; /* Highlighted color for the title */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Adding text shadow for better contrast */
+}
+
+/* Subheading Styling */
+.about-us-section .subheading {
+    font-size: 1.8rem; /* Slightly larger for better visibility */
+    font-weight: 600;
+    color: #ff8c8c; /* Softer highlight for subheading */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Text shadow for better legibility */
+}
+
+/* Paragraph Text Styling */
+.about-us-section p {
+    color: #ddd; /* Lighter color for readability */
+    font-size: 1.2rem; /* Slightly larger font size */
+    line-height: 1.8; /* Increased line height for better readability */
+    max-width: 800px;
+    margin: 0 auto 30px; /* Centered and spaced from other elements */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Text shadow for better readability */
+}
+
+/* Button Styling */
+.about-us-section .btn-glow {
+    background-color: #ff3636;
+    color: #fff;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Adding shadow to button text */
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.about-us-section .btn-glow:hover {
+    transform: scale(1.1);
+    background-color: #e63232;
+}
+
+/* Image Styling for Team Members */
+.about-us-section .team-member {
+    display: inline-block;
+    margin: 20px;
+    text-align: center;
+}
+
+.about-us-section .team-member img {
+    max-width: 150px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    transition: transform 0.3s ease;
+}
+
+.about-us-section .team-member img:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+.about-us-section .team-member h4 {
+    font-size: 1.5rem;
+    color: #ff3636;
+    margin-bottom: 5px;
+}
+
+.about-us-section .team-member p {
+    font-size: 1rem;
+    color: #ddd;
+    margin: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .about-us-section {
+        padding: 50px 10px;
+    }
+
+    .about-us-section .section-title {
+        font-size: 2.5rem;
+    }
+
+    .about-us-section .subheading {
+        font-size: 1.5rem;
+    }
+
+    .about-us-section p {
+        font-size: 1rem;
+    }
+
+    .about-us-section .btn-glow {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+
+    .about-us-section .team-member img {
+        max-width: 120px;
+    }
+
+    .about-us-section .team-member h4 {
+        font-size: 1.2rem;
+    }
+}
+.about-us-section .team-member img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-us-section .team-member img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(255, 54, 54, 0.5);
+}
+.timeline {
+    list-style: none;
+    padding: 0;
+    position: relative;
+}
+
+.timeline li {
+    margin-bottom: 20px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.timeline li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    background-color: #ff3636;
+    border-radius: 50%;
+}
