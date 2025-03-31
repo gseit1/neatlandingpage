@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEAT.SIDE - Coffee Bar</title>
+    <!-- Leaflet.js CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<!-- Leaflet.js JavaScript -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
     <!-- AOS Animation Library -->
 <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
@@ -85,6 +90,48 @@
                     <p><strong>Location:</strong> NEAT.SIDE Coffee Bar</p>
                     <p>Join us for an exclusive coffee tasting event featuring exotic blends and brews.</p>
                     <a href="#" class="btn btn-glow">More Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="your-fit" class="container my-5">
+    <h2 class="text-center graffiti-text">📸 Your Fit – Coffee & Streetwear</h2>
+    <p class="text-center">Tag us with <strong>#NeatFit</strong> to get featured! Vote for the best looks.</p>
+
+    <div class="row">
+        <!-- Example for one card -->
+ <!-- Gallery Item 2 -->
+ <div class="col-md-4">
+    <div class="fit-card">
+        <img src="/outfit3.png" class="img-fluid fit-img" alt="Streetwear & Coffee">
+        <div class="fit-info">
+            <p><strong>@user1</strong></p>
+            <button class="vote-btn" data-id="fit1">🔥 <span class="votes" id="votes-fit1">0</span></button>
+        </div>
+    </div>
+</div>
+
+
+        <!-- Gallery Item 2 -->
+        <div class="col-md-4">
+            <div class="fit-card">
+                <img src="/outfit2.png" class="img-fluid fit-img" alt="Streetwear & Coffee">
+                <div class="fit-info">
+                    <p><strong>@user2</strong></p>
+                    <button class="vote-btn" data-id="fit2">🔥 <span class="votes" id="votes-fit2">0</span></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Item 3 -->
+        <div class="col-md-4">
+            <div class="fit-card">
+                <img src="/outfit1.png" class="img-fluid fit-img" alt="Streetwear & Coffee">
+                <div class="fit-info">
+                    <p><strong>@user3</strong></p>
+                    <button class="vote-btn" data-id="fit3">🔥 <span class="votes" id="votes-fit3">0</span></button>
                 </div>
             </div>
         </div>
@@ -177,6 +224,31 @@
     </div>
 </section>
 
+<!-- Barista Stories Section -->
+<section id="barista-stories" class="container my-5" data-aos="fade-up">
+    <h2 class="text-center graffiti-text">☕ Barista Stories</h2>
+    <p class="text-center">Meet the hands behind your coffee. Real stories from NEAT.SIDE baristas.</p>
+
+    <div class="barista-slider">
+        <div class="barista-card">
+            <img src="/barista1.png" class="barista-img" alt="Barista Alex">
+            <h5>Alex "The Espresso King"</h5>
+            <p>"Coffee is more than a drink, it’s a rhythm. Every shot tells a story."</p>
+        </div>
+        <div class="barista-card">
+            <img src="/barista2.png" class="barista-img" alt="Barista Sam">
+            <h5>Sam "The Latte Artist"</h5>
+            <p>"Pouring art into every cup – because coffee should be beautiful."</p>
+        </div>
+        <div class="barista-card">
+            <img src="/barista2.png" class="barista-img" alt="Barista Mia">
+            <h5>Mia "Hip-Hop & Coffee"</h5>
+            <p>"Beats in my ears, coffee in my hands – NEAT.SIDE is my stage."</p>
+        </div>
+    </div>
+</section>
+
+
 
     <!-- Shop Section -->
     <section id="shop" class="container my-5">
@@ -204,7 +276,33 @@
             </div>
         </div>
     </section>
-
+    <section id="neat-beats" class="container my-5">
+        <h2 class="text-center graffiti-text">🔥 NEAT.SIDE Beats 🔥</h2>
+    
+        <!-- Playlist of the Week -->
+        <div class="playlist-week">
+            <h3>🎧 Playlist of the Week</h3>
+            <iframe 
+                src="https://open.spotify.com/embed/playlist/37i9dQZF1DX2FsCLsHeMrM" 
+                width="100%" 
+                height="380" 
+                frameborder="0" 
+                allowtransparency="true" 
+                allow="encrypted-media">
+            </iframe>
+        </div>
+    
+        <!-- Now Playing Animation -->
+        <div class="now-playing">
+            <div class="equalizer">
+                <span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <p id="now-playing-text">Now Playing: <strong>NEAT.SIDE Hip-Hop Mix</strong></p>
+        </div>
+    
+      
+    </section>
+    
     <!-- Footer Section -->
     <footer class="text-center py-4">
         <p>&copy; 2025 NEAT.SIDE | All Rights Reserved</p>
@@ -230,9 +328,83 @@
             navbar.classList.remove('scrolled');
         }
     });
+    document.addEventListener("DOMContentLoaded", function () {
+    const musicPlayer = document.querySelector(".music-player");
+    const closeButton = document.querySelector(".close-player");
+
+    closeButton.addEventListener("click", function () {
+        musicPlayer.classList.toggle("hidden");
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const trackTitles = [
+        "Lo-Fi Chill Beats",
+        "Underground Freestyle Session",
+        "Old School Hip-Hop Classics",
+        "NEAT.SIDE Exclusive Mix",
+        "Late Night Coffee Vibes"
+    ];
+
+    let currentTrack = 0;
+    setInterval(() => {
+        document.getElementById("now-playing-text").innerHTML = `Now Playing: <strong>${trackTitles[currentTrack]}</strong>`;
+        currentTrack = (currentTrack + 1) % trackTitles.length;
+    }, 5000);
+
+ 
+});
+document.addEventListener("DOMContentLoaded", function () {
+    const voteButtons = document.querySelectorAll(".vote-btn");
+
+    voteButtons.forEach(button => {
+        const fitId = button.dataset.id; // Unique ID for each fit
+        const voteDisplay = document.getElementById(`votes-${fitId}`);
+
+        // Load stored votes from localStorage
+        let currentVotes = parseInt(localStorage.getItem(fitId) || "0", 10);
+        let hasVoted = localStorage.getItem(`voted-${fitId}`) === "true";
+
+        voteDisplay.textContent = currentVotes;
+
+        // Disable button if user has already voted
+        if (hasVoted) {
+            button.disabled = true;
+            button.style.opacity = "0.5"; // Make button look inactive
+        }
+
+        // Add event listener for voting
+        button.addEventListener("click", function () {
+            if (!hasVoted) {
+                currentVotes += 1; // Increment vote count
+                localStorage.setItem(fitId, currentVotes);
+                localStorage.setItem(`voted-${fitId}`, "true"); // Mark user as voted
+                voteDisplay.textContent = currentVotes;
+                button.disabled = true;
+                button.style.opacity = "0.5"; // Change button style after voting
+            }
+        });
+    });
+});
+
+
+
+
 
 
 </script>
+<!-- Floating Music Player -->
+<div class="music-player">
+    <iframe 
+        src="https://open.spotify.com/embed/playlist/37i9dQZF1DX2FsCLsHeMrM" 
+        width="100%" 
+        height="80" 
+        frameborder="0" 
+        allowtransparency="true" 
+        allow="encrypted-media">
+    </iframe>
+    <button class="close-player">✖</button>
+</div>
 
 </body>
 </html>
