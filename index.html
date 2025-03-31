@@ -18,32 +18,39 @@
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand graffiti-text" href="#">NEAT.SIDE</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#shop">Shop</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#matcha">Coffee Matcha</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                </ul>
-            </div>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
+    <div class="container">
+        <a class="navbar-brand graffiti-text" href="#">NEAT.SIDE</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
+                <li class="nav-item"><a class="nav-link" href="#your-fit">Your Fits</a></li>
+                <li class="nav-item"><a class="nav-link" href="#matcha">Coffee Matcha</a></li>
+                <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                <li class="nav-item"><a class="nav-link" href="#barista-stories">Barista Stories</a></li>
+                <li class="nav-item"><a class="nav-link" href="#neat-beats">Beats</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <!-- Hero Section -->
+
     <header class="hero">
         <div class="container text-center text-white">
             <h1 class="graffiti-text">NEAT.SIDE</h1>
             <p>More than coffee, it's a movement.</p>
-            <a href="#shop" class="btn btn-glow mt-3">Explore</a>
+            <div class="hero-buttons">
+                <a href="#events" class="btn btn-glow mt-3">Explore</a>
+                <a href="#your-fit" class="btn btn-outline-light mt-3">Join the Culture</a>
+            </div>
         </div>
     </header>
+    
 <!-- Events Section -->
 <section id="events" class="container my-5" data-aos="fade-up">
     <h2 class="text-center graffiti-text">Upcoming Events</h2>
@@ -103,7 +110,7 @@
     <div class="row">
         <!-- Example for one card -->
  <!-- Gallery Item 2 -->
- <div class="col-md-4">
+ <div  class="col-md-4">
     <div class="fit-card">
         <img src="/outfit3.png" class="img-fluid fit-img" alt="Streetwear & Coffee">
         <div class="fit-info">
@@ -250,32 +257,7 @@
 
 
 
-    <!-- Shop Section -->
-    <section id="shop" class="container my-5">
-        <h2 class="text-center graffiti-text">Shop NEAT.SIDE Merch</h2>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card mb-3">
-                    <img src="/t-shirt1.jpg" class="card-img-top" alt="T-Shirt 1">
-                    <div class="card-body">
-                        <h5 class="card-title">NEAT.SIDE T-Shirt</h5>
-                        <p class="card-text">Street style, comfy and cool.</p>
-                        <a href="#" class="btn btn-glow">Buy Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-3">
-                    <img src="/t-shirt2.jpg" class="card-img-top" alt="T-Shirt 2">
-                    <div class="card-body">
-                        <h5 class="card-title">NEAT.SIDE T-Shirt</h5>
-                        <p class="card-text">Limited Edition. Get it before it's gone!</p>
-                        <a href="#" class="btn btn-glow">Buy Now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  
     <section id="neat-beats" class="container my-5">
         <h2 class="text-center graffiti-text">🔥 NEAT.SIDE Beats 🔥</h2>
     
@@ -314,6 +296,28 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <script>
+
+document.querySelectorAll('a.nav-link').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        // Get the target element (the section)
+        const targetSection = document.querySelector(this.getAttribute('href'));
+
+        // Scroll to the section with smooth behavior and custom duration
+        targetSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+
+        // Optionally, add a custom delay for a slower scroll (1000ms = 1 second)
+        setTimeout(() => {
+            window.scrollBy(0, -60);  // Adjust scroll offset if navbar is overlaying content
+        }, 500); // Delay for a slower transition effect
+    });
+});
+
+
     AOS.init({
         duration: 1000,  // Animation duration
         easing: 'ease-in-out',  // Easing function
@@ -337,55 +341,34 @@
     });
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    const trackTitles = [
-        "Lo-Fi Chill Beats",
-        "Underground Freestyle Session",
-        "Old School Hip-Hop Classics",
-        "NEAT.SIDE Exclusive Mix",
-        "Late Night Coffee Vibes"
-    ];
-
-    let currentTrack = 0;
-    setInterval(() => {
-        document.getElementById("now-playing-text").innerHTML = `Now Playing: <strong>${trackTitles[currentTrack]}</strong>`;
-        currentTrack = (currentTrack + 1) % trackTitles.length;
-    }, 5000);
-
- 
-});
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
     const voteButtons = document.querySelectorAll(".vote-btn");
 
     voteButtons.forEach(button => {
-        const fitId = button.dataset.id; // Unique ID for each fit
+        const fitId = button.dataset.id;
         const voteDisplay = document.getElementById(`votes-${fitId}`);
 
-        // Load stored votes from localStorage
-        let currentVotes = parseInt(localStorage.getItem(fitId) || "0", 10);
-        let hasVoted = localStorage.getItem(`voted-${fitId}`) === "true";
-
+        let currentVotes = localStorage.getItem(fitId) || 0;
         voteDisplay.textContent = currentVotes;
 
-        // Disable button if user has already voted
-        if (hasVoted) {
-            button.disabled = true;
-            button.style.opacity = "0.5"; // Make button look inactive
-        }
+        button.addEventListener("click", () => {
+            if (!button.classList.contains("voted")) { 
+                let newVotes = parseInt(currentVotes) + 1;
+                localStorage.setItem(fitId, newVotes);
+                voteDisplay.textContent = newVotes;
+                button.classList.add("voted");
 
-        // Add event listener for voting
-        button.addEventListener("click", function () {
-            if (!hasVoted) {
-                currentVotes += 1; // Increment vote count
-                localStorage.setItem(fitId, currentVotes);
-                localStorage.setItem(`voted-${fitId}`, "true"); // Mark user as voted
-                voteDisplay.textContent = currentVotes;
-                button.disabled = true;
-                button.style.opacity = "0.5"; // Change button style after voting
+                // Animation
+                button.innerHTML = "🔥 Voted!";
+                setTimeout(() => {
+                    button.innerHTML = `🔥 ${newVotes}`;
+                }, 1500);
             }
         });
     });
 });
+
+
 
 
 

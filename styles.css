@@ -1,3 +1,7 @@
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
 /* General Body */
 body {
     background-color: #1a1a1a; /* Dark background for a sleek look */
@@ -12,29 +16,83 @@ body {
     overflow-x: hidden;
 }
 
-/* Navbar on Scroll */
+/* Enhanced Navbar Styling */
 .navbar {
     position: sticky;
     top: 0;
-    z-index: 1000; /* Ensure it stays above other elements */
+    z-index: 1000;
     background-color: rgba(0, 0, 0, 0.85); /* Semi-transparent background */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Add a shadow for better visibility */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
     transition: background-color 0.3s, box-shadow 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
 }
 
 .navbar.scrolled {
-    background-color: rgba(0, 0, 0, 0.85);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.95); /* Slightly darker on scroll */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
 }
 
-.navbar a.nav-link {
+.navbar .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ff3636;
+    text-transform: uppercase;
+    text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.navbar.scrolled a.nav-link {
-    color: #ff3636;
+.navbar .logo:hover {
+    color: #ff8c8c;
 }
 
+.navbar .nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar .nav-links a:hover {
+    color: #ff3636;
+    transform: scale(1.1);
+}
+
+.navbar .nav-links a.active {
+    color: #ff3636;
+    font-weight: bold;
+    border-bottom: 2px solid #ff3636;
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .navbar .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .navbar .nav-links a {
+        width: 100%;
+        text-align: left;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+}
 /* JavaScript to Add/Remove 'scrolled' Class on Scroll */
 .graffiti-text {
     font-family: 'Permanent Marker', cursive;
@@ -56,6 +114,11 @@ body {
     position: relative;
     animation: heroAnimation 1.5s ease-out;
 }
+
+.hero-buttons a {
+    margin: 10px;
+}
+
 
 .hero::before {
     content: "";
